@@ -23,5 +23,4 @@ const site = ({
     }
   });
   
-
-  export default site;
+export default site;

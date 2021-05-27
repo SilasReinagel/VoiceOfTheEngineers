@@ -1,11 +1,18 @@
 <script>
-  import Container from '../Elements/Container.svelte';
+  import Container from '../Elements/TightContainer.svelte';
+  import SuggestionSummary from '../Components/SuggestionSummary.svelte';
+import AddSuggestion from '../Components/AddSuggestion.svelte';
 
+  const arr = [0, 1, 2, 3];
 </script>
 
 <Container>
-  <section class="center-vh">
-    <h1>Home</h1>
+  <section>
+    <h1>Hottest Suggestions</h1>
+    {#each arr as s}
+      <SuggestionSummary/>
+    {/each}
+    <AddSuggestion/>
   </section>
 </Container>
 
