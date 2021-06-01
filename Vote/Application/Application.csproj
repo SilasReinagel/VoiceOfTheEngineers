@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Carvana.Mediator" Version="1.1902.0.163521" />
+      <PackageReference Include="Carvana.Results" Version="0.2000.0.313163" />
+    </ItemGroup>
+
+</Project>
