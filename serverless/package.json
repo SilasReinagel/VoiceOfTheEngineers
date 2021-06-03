@@ -1,0 +1,25 @@
+{
+  "name": "serverless",
+  "version": "1.0.0",
+  "description": "backend for voice of the developers",
+  "main": "connection.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SilasReinagel/VoiceOfTheEngineers.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SilasReinagel/VoiceOfTheEngineers/issues"
+  },
+  "homepage": "https://github.com/SilasReinagel/VoiceOfTheEngineers#readme",
+  "dependencies": {
+    "mongoose": "^5.12.12"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
