@@ -1,7 +1,12 @@
+<script>
+  import { isLoggedIn } from '../Store';
+</script>
+
 <div class="root">
   <div class="row center">
     <div class="metascore center-vh">
       <div class="upvote-icon center-vh">
+        {#if $isLoggedIn}
         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
           width="36px" height="36px" viewBox="0 0 292.362 292.361" style="enable-background:new 0 0 292.362 292.361;" xml:space="preserve">
         <g>
@@ -9,7 +14,8 @@
             C1.807,200.904,0,205.186,0,210.134s1.807,9.233,5.424,12.847c3.621,3.617,7.902,5.425,12.85,5.425h255.813
             c4.949,0,9.233-1.808,12.848-5.425c3.613-3.613,5.427-7.898,5.427-12.847S290.548,200.904,286.935,197.287z" fill="#fff"/>
         </g>
-        </svg>        
+        </svg>     
+        {/if}   
       </div>
       <p>26</p>
     </div>
@@ -32,7 +38,7 @@
   flex-direction: column;
   margin: 1em 0;
   background-color: rgba(0, 0, 0, 0.1);
-  padding: 10px 0 0 10px;
+  padding: 10px 0 0 px;
   border-radius: 12px;
 }
 

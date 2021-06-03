@@ -1,7 +1,8 @@
 <script>
+  import { isLoggedIn } from '../Store';
   import Container from '../Elements/TightContainer.svelte';
   import SuggestionSummary from '../Components/SuggestionSummary.svelte';
-import AddSuggestion from '../Components/AddSuggestion.svelte';
+  import AddSuggestion from '../Components/AddSuggestion.svelte';
 
   const arr = [0, 1, 2, 3];
 </script>
@@ -12,7 +13,9 @@ import AddSuggestion from '../Components/AddSuggestion.svelte';
     {#each arr as s}
       <SuggestionSummary/>
     {/each}
-    <AddSuggestion/>
+    {#if $isLoggedIn}
+      <AddSuggestion/>
+    {/if}
   </section>
 </Container>
 

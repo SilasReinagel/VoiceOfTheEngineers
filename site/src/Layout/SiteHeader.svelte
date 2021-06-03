@@ -1,10 +1,9 @@
 <script>
-  let sidebarOpen = false;
+  import state, { isLoggedIn } from '../Store';
+  import company from '../static-content.js';
 
-  import HamburgerIcon from '../Elements/HamburgerIcon.svelte';
-  import SiteSidebar from './SiteSidebar.svelte';
-
-  import company, { pages } from '../static-content.js';
+  const login = () => state.update(state => ({ ...state, userSession: { id: 1 }}));
+  const logout = () => state.update(state => ({ ...state, userSession: {}}));
 </script>
 
 <header>
@@ -14,6 +13,17 @@
     </div>
     <h1>{company.name}</h1>
   </a>
+
+  {#if !$isLoggedIn}
+    <button on:click={login}>
+      Login
+    </button>
+  {/if}
+  {#if $isLoggedIn}
+    <button on:click={logout}>
+      Logout
+    </button>
+  {/if}
 </header>
 
 <style>
@@ -43,19 +53,11 @@
     width: 48px;
   }
 
-  .navlink {
-    color: var(--header-color);
-    margin: 5px 15px;
-    font-size: 1.1em;
-    line-height: 22px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    transition-duration: 0.2s;
+  button {
+    border: 0px;
+    border-radius: 6px;
+    background-color: #fff;
+    padding: 8px;
+    min-width: 80px;
   }
-
-  .navlink:hover {
-    color: var(--header-color-hover);
-  }
-
 </style>
