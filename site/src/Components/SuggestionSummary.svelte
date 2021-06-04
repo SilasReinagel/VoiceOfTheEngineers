@@ -1,9 +1,18 @@
 <script>
-  import { isLoggedIn } from '../Store';
+  export let suggestion;
+
+  import state, { isLoggedIn } from '../Store';
+
+  const viewSuggestionDetails = _ => {
+    state.update(s => ({ ...s, suggestionDetail: suggestion}));
+    window.location.href='/index.html?page=details';
+  };
+
+  const upvoteText = num => num.toString();
 </script>
 
 <div class="root">
-  <div class="row center">
+  <div class="row center full-width">
     <div class="metascore center-vh">
       <div class="upvote-icon center-vh">
         {#if $isLoggedIn}
@@ -15,18 +24,20 @@
             c4.949,0,9.233-1.808,12.848-5.425c3.613-3.613,5.427-7.898,5.427-12.847S290.548,200.904,286.935,197.287z" fill="#fff"/>
         </g>
         </svg>     
-        {/if}   
+        {/if}
       </div>
-      <p>26</p>
+      <p class="upvotes">{upvoteText(suggestion.upvotes)}</p>
     </div>
-    <div>
-      <div class="idea row">
-        <h2>Simplify Deployment Process - 1-Click Approval to Deploy</h2>
-      </div>
+    <div class="suggestion-summary">
+      <button on:click={viewSuggestionDetails} class="idea row">
+        <h2>{suggestion.title}</h2>
+      </button>
       <div class="row space-between">
-        <p>Last Activity: 5/27/21</p>
-        <p>Created: 5/27/21</p>
-        <p><u>21 comments</u></p>
+        <p>Last Activity: {suggestion.lastActivityDateTime}</p>
+        <p>Created: {suggestion.createdDateTime}</p>
+        <button on:click={viewSuggestionDetails} class="link-button">
+          <p><u>{suggestion.numComments} comments</u></p>
+        </button>
       </div>
     </div>
   </div>
@@ -38,7 +49,7 @@
   flex-direction: column;
   margin: 1em 0;
   background-color: rgba(0, 0, 0, 0.1);
-  padding: 10px 0 0 px;
+  padding: 10px;
   border-radius: 12px;
 }
 
@@ -47,13 +58,9 @@
   height: 64px;
 }
 
-.row {
-  display: flex;
-  flex-direction: row;
-}
-
-.space-between {
-  justify-content: space-between;
+.upvotes {
+  min-width: 56px;
+  text-align: center;
 }
 
 .metascore {
@@ -72,19 +79,30 @@
   width: 100%;
 }
 
+.suggestion-summary {
+  width: 100%;
+}
+
+h2 {
+  margin: 0;
+  text-align: center;
+}
+
 .idea h2 {
   color: #000;
 }
 
-h1, h2, p {
-  margin: 0;
-}
-
-h2 {
-  text-align: center;
-}
-
 p {
+  margin: 0;
   color: #fff;
+}
+
+button {
+  cursor: pointer;
+  border: 0px;  
+}
+
+.link-button {
+  background-color: rgba(0,0,0,0);
 }
 </style>

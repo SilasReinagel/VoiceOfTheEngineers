@@ -1,17 +1,15 @@
 <script>
-  import { isLoggedIn } from '../Store';
+  import state, { isLoggedIn } from '../Store';
   import Container from '../Elements/TightContainer.svelte';
   import SuggestionSummary from '../Components/SuggestionSummary.svelte';
   import AddSuggestion from '../Components/AddSuggestion.svelte';
-
-  const arr = [0, 1, 2, 3];
 </script>
 
 <Container>
   <section>
     <h1>Hottest Suggestions</h1>
-    {#each arr as s}
-      <SuggestionSummary/>
+    {#each $state.hottestSuggestions as s}
+      <SuggestionSummary suggestion={s}/>
     {/each}
     {#if $isLoggedIn}
       <AddSuggestion/>

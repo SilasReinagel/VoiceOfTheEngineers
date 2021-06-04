@@ -1,14 +1,16 @@
 import Home from './Pages/Home.svelte';
+import SuggestionDetails from './Pages/SuggestionDetails.svelte';
 
 const DefaultPage = Home;
 export const pages = [
   { path: '/', href: '/', name: 'Home', component: DefaultPage, showInMainNav: true },
-]
+  { path: '/details', href: '/index.html?page=details', name: 'Suggestion Details', component: SuggestionDetails, showInMainNav: true },
+];
 
 const address = (line1, city, state, zip5, mapLink) => ({ line1, city, state, zip5, mapLink, toString: () => `${line1}, ${city}, ${state}, ${zip5}`});
 const site = ({
-    name: 'Voice of The Engineer',
-    owner: 'Voice of the Engineer',
+    name: 'Voice of The Engineers',
+    owner: 'Voice of the Engineers',
     slogan: 'We are great at business!',
     email: 'aaa@abc.com',
     logo: './images/logo.png',
