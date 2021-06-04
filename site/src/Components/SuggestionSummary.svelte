@@ -74,7 +74,7 @@
 .idea {
   padding: 18px;
   border-radius: 12px;
-  background-color: #fff;
+  background-color: var(--panel-bg);
   width: 100%;
 }
 
@@ -84,7 +84,8 @@
 
 h2 {
   margin: 0;
-  text-align: center;
+  width: 100%;
+  text-align: left;
 }
 
 .idea h2 {

@@ -7,7 +7,7 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
   --primary-color-light: #454545;
   --primary-color-hover: #454545;
   --primary-background-color: #fff;
-  --secondary-color: #29C4F8;
+  --secondary-color: #676767;
   --secondary-color-hover: #3CD2F9;
   --secondary-color-press: #4AF3F8;
   --alternate-color:#00dce8;
@@ -22,6 +22,8 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
   --header-color: #fff;
   --header-color-hover: #3CD2F9;
   --header-color-press: #4AF3F8;
+
+  --panel-bg: rgba(255, 255, 255, 0.85);
 }
 
 @font-face {

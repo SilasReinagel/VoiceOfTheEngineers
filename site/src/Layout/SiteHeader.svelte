@@ -63,7 +63,7 @@
   button {
     border: 0px;
     border-radius: 6px;
-    background-color: #fff;
+    background-color: var(--panel-bg);
     padding: 8px;
     min-width: 80px;
   }

@@ -2,28 +2,32 @@
   import state, { isLoggedIn } from '../Store';
   import Container from '../Elements/TightContainer.svelte';
   import SuggestionSummary from '../Components/SuggestionSummary.svelte';
-  import AddSuggestion from '../Components/AddSuggestion.svelte';
+  import AddSuggestionButton from '../Components/AddSuggestionButton.svelte';
+  import AddSuggestionForm from '../Components/AddSuggestionForm.svelte';
   import SuggestionDetail from '../Components/SuggestionDetail.svelte';
 </script>
 
 <Container>
-  {#if $state.currentView === 'Hottest'}
   <section>
+  {#if $state.currentView === 'Hottest'}
     <h1>Hottest Suggestions</h1>
     {#each $state.hottestSuggestions as s}
       <SuggestionSummary suggestion={s}/>
     {/each}
     {#if $isLoggedIn}
-      <AddSuggestion/>
+      <AddSuggestionButton/>
     {/if}
-  </section>
   {/if}
 
   {#if $state.currentView === 'SuggestionDetail'}
-  <section>
     <SuggestionDetail />
-  </section>
   {/if}
+
+  {#if $state.currentView === 'NewSuggestion'}
+    <AddSuggestionForm />
+  {/if}
+  
+  </section>
 </Container>
 
 <style>

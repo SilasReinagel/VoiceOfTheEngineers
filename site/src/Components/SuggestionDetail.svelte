@@ -19,13 +19,12 @@
   <div class="details">
     <p>{@html $suggestionDetail.detail}</p>
   </div>
-
 </div>
 
 <style>
   .root {
     width: 100%;
-    background-color: #fff;
+    background-color: var(--panel-bg);
     border-radius: 12px;
     padding: 24px;
   }
