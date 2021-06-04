@@ -4,8 +4,7 @@
   import state, { isLoggedIn } from '../Store';
 
   const viewSuggestionDetails = _ => {
-    state.update(s => ({ ...s, suggestionDetail: suggestion}));
-    window.location.href='/index.html?page=details';
+    state.update(s => ({ ...s, suggestionDetail: suggestion, currentView: 'SuggestionDetail' }));
   };
 
   const upvoteText = num => num.toString();

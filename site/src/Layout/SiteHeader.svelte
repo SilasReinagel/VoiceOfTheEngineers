@@ -2,17 +2,18 @@
   import state, { isLoggedIn } from '../Store';
   import company from '../static-content.js';
 
-  const login = () => state.update(state => ({ ...state, userSession: { id: 1 }}));
-  const logout = () => state.update(state => ({ ...state, userSession: {}}));
+  const login = () => state.update(s => ({ ...s, userSession: { id: 1 }}));
+  const logout = () => state.update(s => ({ ...s, userSession: {}}));
+  const returnHome = () => state.update(s => ({ ...s, currentView: 'Hottest' }))
 </script>
 
 <header>
-  <a href="." class="logo">
+  <button on:click={returnHome} class="logo">
     <div class="logo-img">
       <img src={company.logo} alt="Logo"/>
     </div>
     <h1>{company.name}</h1>
-  </a>
+  </button>
 
   {#if !$isLoggedIn}
     <button on:click={login}>
@@ -47,6 +48,12 @@
     display: flex;
     flex-direction: row;
     max-height: 92px;
+  }
+
+  .logo {
+    background-color: rgba(0,0,0,0);
+    border: 0px;
+    cursor: pointer;
   }
 
   .logo-img {

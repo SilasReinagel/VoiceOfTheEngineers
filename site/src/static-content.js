@@ -1,10 +1,8 @@
 import Home from './Pages/Home.svelte';
-import SuggestionDetails from './Pages/SuggestionDetails.svelte';
 
 const DefaultPage = Home;
 export const pages = [
-  { path: '/', href: '/', name: 'Home', component: DefaultPage, showInMainNav: true },
-  { path: '/details', href: '/index.html?page=details', name: 'Suggestion Details', component: SuggestionDetails, showInMainNav: true },
+  { path: '/', href: '/', name: 'Home', component: DefaultPage, showInMainNav: true }
 ];
 
 const address = (line1, city, state, zip5, mapLink) => ({ line1, city, state, zip5, mapLink, toString: () => `${line1}, ${city}, ${state}, ${zip5}`});

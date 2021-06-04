@@ -3,9 +3,11 @@
   import Container from '../Elements/TightContainer.svelte';
   import SuggestionSummary from '../Components/SuggestionSummary.svelte';
   import AddSuggestion from '../Components/AddSuggestion.svelte';
+  import SuggestionDetail from '../Components/SuggestionDetail.svelte';
 </script>
 
 <Container>
+  {#if $state.currentView === 'Hottest'}
   <section>
     <h1>Hottest Suggestions</h1>
     {#each $state.hottestSuggestions as s}
@@ -15,6 +17,13 @@
       <AddSuggestion/>
     {/if}
   </section>
+  {/if}
+
+  {#if $state.currentView === 'SuggestionDetail'}
+  <section>
+    <SuggestionDetail />
+  </section>
+  {/if}
 </Container>
 
 <style>

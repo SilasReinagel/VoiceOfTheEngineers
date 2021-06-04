@@ -167,6 +167,11 @@ img {
   padding-right: 0.5em
 }
 
+.px2 {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
 .py4 {
   padding-top: 4em;
   padding-bottom: 4em;
