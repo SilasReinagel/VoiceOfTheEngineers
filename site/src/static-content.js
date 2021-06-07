@@ -22,5 +22,7 @@ const site = ({
         // reddit: ''
     }
   });
-  
+
+export const commentsEnabled = false;
+
 export default site;

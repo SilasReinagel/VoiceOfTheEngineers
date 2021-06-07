@@ -1,6 +1,7 @@
 <script>
   export let suggestion;
 
+  import { commentsEnabled } from '../static-content';
   import state, { isLoggedIn } from '../Store';
 
   const viewSuggestionDetails = _ => {
@@ -34,9 +35,11 @@
       <div class="row space-between">
         <p>Last Activity: {suggestion.lastActivityDateTime}</p>
         <p>Created: {suggestion.createdDateTime}</p>
+        {#if commentsEnabled}
         <button on:click={viewSuggestionDetails} class="link-button">
           <p><u>{suggestion.numComments} comments</u></p>
         </button>
+        {/if}
       </div>
     </div>
   </div>
