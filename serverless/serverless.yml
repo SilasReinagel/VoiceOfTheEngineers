@@ -1,0 +1,19 @@
+# serverless.yml
+service: lambda-functions
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, "dev"}
+  region: us-west-2
+  role: arn:aws:iam::202556213370:role/lambda-cloudwatchlogs-vpc-sns-xray-kms-secretsmanager-write
+  environment: 
+    stage: ${self:provider.stage}
+  versionFunctions: false
+functions:
+  CreateSuggestion:
+    handler: src/handlers/create-suggestion.handler
+    name: ${self:provider.stage}-create-suggestion
+    description: "Creates a suggestion"
+    tracing: Active
+    destinations:
+      # onFailure: arn:aws:sns:us-west-2:202556213370:lambda-function-errors-${self:provider.stage}
