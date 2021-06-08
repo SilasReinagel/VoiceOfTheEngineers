@@ -5,11 +5,29 @@
   import LoginIcon from '../Elements/LoginIcon.svelte';
   import LogoutIcon from '../Elements/LogoutIcon.svelte';
 
+  import { onMount } from "svelte";
+  import auth from "../authService";
+
+	let auth0Client;
+	onMount(async () => {
+    auth0Client = await auth.createClient();
+    let user = await auth0Client.getUser();
+    state.update( s => ({ ...s, user: user}));
+  });
+
+	const login = () => {
+    auth.loginWithPopup(auth0Client);
+  }
+
+  const logout = () => {
+    auth.logout(auth0Client);
+  }
+
   const iconButtonSize = 44;
 
-  const login = () => state.update(s => ({ ...s, userSession: { id: 1 }}));
-  const logout = () => state.update(s => ({ ...s, userSession: {}}));
-  const returnHome = () => state.update(s => ({ ...s, currentView: 'Hottest' }))
+  // const login = () => state.update(s => ({ ...s, userSession: { id: 1 }}));
+  // const logout = () => state.update(s => ({ ...s, userSession: {}}));
+  const returnHome = () => state.update(s => ({ ...s, currentView: 'Hottest' }));
 </script>
 
 <header>
