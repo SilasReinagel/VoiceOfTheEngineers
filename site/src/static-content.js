@@ -1,26 +1,23 @@
 import Home from './Pages/Home.svelte';
+import Theme from './Themes/brand-theme-carvana';
 
 const DefaultPage = Home;
 export const pages = [
   { path: '/', href: '/', name: 'Home', component: DefaultPage, showInMainNav: true }
 ];
 
-const address = (line1, city, state, zip5, mapLink) => ({ line1, city, state, zip5, mapLink, toString: () => `${line1}, ${city}, ${state}, ${zip5}`});
+const hasCompanyName = !!Theme.companyName && Theme.companyName.length > 0;
+const siteName = hasCompanyName 
+  ? `Voice of ${Theme.companyName}'s ${Theme.groupName}` 
+  : `Voice of the ${Theme.groupName}`;
+const owner = hasCompanyName ? Theme.companyName : 'Voice of the Engineers';
 const site = ({
-    name: 'Voice of The Engineers',
-    owner: 'Voice of the Engineers',
+    name: siteName,
+    owner: owner,
     slogan: 'We are great at business!',
-    email: 'aaa@abc.com',
-    logo: './images/logo.png',
-    logoMobile: './images/logo.png',
-    address: address("123 Main Street", "City", "ST", "12345", ""),
-    contactPrompt: 'Send us a message',
-    social: {
-        // steam: '',
-        // twitter: '',
-        // itchio: '',
-        // reddit: ''
-    }
+    logo: Theme.logo,
+    logoMobile: Theme.logo,
+    backgroundInlineStyle: Theme.backgroundInlineStyle
   });
 
 export const commentsEnabled = false;
