@@ -41,7 +41,7 @@ export default {
 	plugins: [
 		replace({
 			preventAssignment: true,
-			'Auth0_clientId': `'` + process.env.Auth0_clientId `'`
+			'Auth0_clientId': `'` + process.env.Auth0_clientId + `'`
 		}),
 
 		svelte({
