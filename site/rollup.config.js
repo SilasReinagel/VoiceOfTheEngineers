@@ -39,6 +39,11 @@ export default {
 		file: 'public/build/bundle.[hash].js'
 	},
 	plugins: [
+		replace({
+			preventAssignment: true,
+			'Auth0_clientId': process.env.Auth0_clientId
+		}),
+
 		svelte({
 			preprocess: sveltePreprocess({ sourceMap: !production }),
 			compilerOptions: {
@@ -56,13 +61,7 @@ export default {
 
 		!production && serve(),
 		!production && livereload('public'),
-		production && terser(),
-
-		// replace({
-		// 	AUTH0_DOMAIN_URL: JSON.stringify(process.env.AUTH0_DOMAIN_URL),
-		// 	AUTH0_CLIENT_ID: JSON.stringify(process.env.AUTH0_CLIENT_ID)
-		// }),
-	
+		production && terser(),	
 	],
 	watch: {
 		clearScreen: false
