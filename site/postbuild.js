@@ -2,7 +2,7 @@ const site = require('./metadata.js');
 const fs = require("fs");
 const replace = require('replace-in-file');
 
-console.log({ client: process.env.Auth0_clientId });
+console.log('Beginning Post-Build');
 
 const replaceFs = (targetFile, from, to) => {
   try {
