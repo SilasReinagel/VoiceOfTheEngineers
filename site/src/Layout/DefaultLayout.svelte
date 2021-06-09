@@ -3,6 +3,7 @@
   import SiteFooter from './SiteFooter.svelte';
 
   import company from '../static-content.js';
+
 </script>
 
 <style>

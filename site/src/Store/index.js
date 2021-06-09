@@ -14,13 +14,16 @@ const testSuggestions = [
 
 const initialState = {
   currentView: 'Hottest',
-  userSession: {},
   hottestSuggestions: testSuggestions,
-  suggestionDetail: {}
+  suggestionDetail: {},
+  user: null
 };
 
+export const popupOpen = writable(false);
+export const error = writable();
+
 export const state = writable(initialState);
-export const isLoggedIn = derived(state, $state => !!$state.userSession.id);
+export const isLoggedIn = derived(state, $state => !!$state.user);
 export const suggestionDetail = derived(state, $state => $state.suggestionDetail);
 export const hottestSuggestions = derived(state, $state => $state.hottestSuggestions);
 export default state; 
