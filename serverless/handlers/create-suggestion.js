@@ -1,15 +1,17 @@
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
+require('dotenv').config(); 
+
 //const { getMongoConfig } = require('../lib/secrets');
 const { Suggestion } = require('../models/suggestion');
 
 let conn = null;
 
 const handler = async function (event, context) {
-    const MongoURI = 'mongodb+srv://noah:Illlauren94@cluster0.9ovld.mongodb.net/test?retryWrites=true&w=majority';//await getMongoConfig();
+    const MongoURI = process.env.MONGO_CONNECTION_STRING; //await getMongoConfig();
 
-    //context.callbackWaitsForEmptyEventLoop = false;
+    context.callbackWaitsForEmptyEventLoop = false;
 
     if (conn == null) {
         mongoose.connect(MongoURI, { useNewUrlParser: true });
@@ -35,5 +37,3 @@ const handler = async function (event, context) {
 }
 
 module.exports.handler = handler;
-
-handler({authorId: 'xyz', title: 'doof tilte', description: 'this is stuff'}, {});
