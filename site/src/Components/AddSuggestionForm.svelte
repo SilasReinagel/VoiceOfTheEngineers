@@ -7,7 +7,7 @@
   const submit = e => {
     const nowStr = new Date().toLocaleDateString('en-US');
     state.update(s => ({ ...s, 
-      hottestSuggestions: s.hottestSuggestions.concat(suggestion(shortVersion, detail, nowStr, nowStr, 0, 0)),
+      hottestSuggestions: s.hottestSuggestions.concat(suggestion(-1, shortVersion, detail, nowStr, nowStr, 1, 0, true)),
       currentView: 'Hottest'
     }))
   };

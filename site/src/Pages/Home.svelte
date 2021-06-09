@@ -5,6 +5,13 @@
   import AddSuggestionButton from '../Components/AddSuggestionButton.svelte';
   import AddSuggestionForm from '../Components/AddSuggestionForm.svelte';
   import SuggestionDetail from '../Components/SuggestionDetail.svelte';
+
+  import { afterUpdate} from 'svelte';
+
+  afterUpdate(() => {
+    console.log($state);
+  })
+
 </script>
 
 <Container>
