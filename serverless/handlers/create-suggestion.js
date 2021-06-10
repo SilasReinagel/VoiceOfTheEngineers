@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
-require('dotenv').config(); 
+// require('dotenv').config(); 
 
 //const { getMongoConfig } = require('../lib/secrets');
 const { Suggestion } = require('../models/suggestion');
