@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
-require('dotenv').config(); 
 
 //const { getMongoConfig } = require('../lib/secrets');
 const { Suggestion } = require('../models/suggestion');
@@ -29,6 +28,6 @@ const handler = async function (event, context) {
     return result;
 }
 
-handler({authorId: 'xyz'}, {});
+// handler({authorId: 'xyz'}, {});
 
 module.exports.handler = handler;
