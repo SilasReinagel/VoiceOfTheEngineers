@@ -11,6 +11,7 @@ Intended to be a social tool that helps medium and large tech companies to make 
 ## What Do We Need:
 - Frontend Site
 - Backend API
+- GQL Schema- 
 
 ---
 
