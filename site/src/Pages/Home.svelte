@@ -6,29 +6,31 @@
   import AddSuggestionForm from '../Components/AddSuggestionForm.svelte';
   import SuggestionDetail from '../Components/SuggestionDetail.svelte';
   import TestGqlButton from '../Components/TestGqlButton.svelte';
+  import site from '../static-content';
 </script>
 
 <Container>
   <section>
-  {#if $state.currentView === 'Hottest'}
-    <h1>Hottest Suggestions</h1>
-    {#each $state.hottestSuggestions as s}
-      <SuggestionSummary suggestion={s}/>
-    {/each}
-    {#if $isLoggedIn}
-      <AddSuggestionButton/>
+    <a href="./index.html?page=vision"><h1 class="link center">What is {site.name}?</h1></a>
+    {#if $state.currentView === 'Hottest'}
+      <h1>Hottest Suggestions</h1>
+      {#each $state.hottestSuggestions as s}
+        <SuggestionSummary suggestion={s}/>
+      {/each}
+      {#if $isLoggedIn}
+        <AddSuggestionButton/>
+      {/if}
     {/if}
-  {/if}
 
-  {#if $state.currentView === 'SuggestionDetail'}
-    <SuggestionDetail />
-  {/if}
+    {#if $state.currentView === 'SuggestionDetail'}
+      <SuggestionDetail />
+    {/if}
 
-  {#if $state.currentView === 'NewSuggestion'}
-    <AddSuggestionForm />
-  {/if}
+    {#if $state.currentView === 'NewSuggestion'}
+      <AddSuggestionForm />
+    {/if}
   
-  <!-- <TestGqlButton/> -->
+    <!-- <TestGqlButton/> -->
 
   </section>
 </Container>
@@ -37,5 +39,11 @@
   section {
     padding: 1em;
     min-height: 83vh;
+  }
+
+  .link {
+    text-decoration: underline;
+    text-align: center;
+    margin-bottom: 1.5em;
   }
 </style>

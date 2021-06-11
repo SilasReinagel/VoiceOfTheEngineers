@@ -1,9 +1,11 @@
 import Home from './Pages/Home.svelte';
+import Vision from './Pages/Vision.svelte';
 import Theme from './Themes/brand-theme-carvana';
 
 const DefaultPage = Home;
 export const pages = [
-  { path: '/', href: '/', name: 'Home', component: DefaultPage, showInMainNav: true }
+  { path: '/', href: '/', name: 'Home', component: DefaultPage, showInMainNav: true },
+  { path: '/vision', href: '/vision', name: 'Vision', component: Vision, showInMainNav: true }
 ];
 
 const hasCompanyName = !!Theme.companyName && Theme.companyName.length > 0;

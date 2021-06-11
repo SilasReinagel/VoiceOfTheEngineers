@@ -25,9 +25,14 @@
 
   const iconButtonSize = 44;
 
-  // const login = () => state.update(s => ({ ...s, userSession: { id: 1 }}));
-  // const logout = () => state.update(s => ({ ...s, userSession: {}}));
-  const returnHome = () => state.update(s => ({ ...s, currentView: 'Hottest' }));
+  const returnHome = () => {
+    state.update(s => ({ ...s, currentView: 'Hottest' }));
+    if ((new URLSearchParams(window.location.search).get('page') || '') === 'vision')
+    {
+      window.history.pushState({}, document.title, "/");
+      window.location.pathname = "/";
+    }
+  };
 </script>
 
 <header>
