@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
+// require('dotenv').config(); 
 
 //const { getMongoConfig } = require('../lib/secrets');
-const { Suggestion } = require('../models/suggestion');
+const { Suggestion } = require('./suggestion');
 
 let conn = null;
 
@@ -19,15 +20,20 @@ const handler = async function (event, context) {
             .on('error', error => console.log('Error connecting to Mongo:', error));
     }
 
-    const { authorId } = event;
+    const { authorId, title, description } = event;
 
-    const result = await Suggestion.find({authorId});
+    const suggestion = { 
+        authorId,
+        title,
+        description,
+        upvotes: [],
+        createdOn: new Date(),
+        updatedOn: new Date()
+    };
 
-    console.log('RESULT', result);
+    const result = await new Suggestion(suggestion).save();
 
     return result;
 }
-
-// handler({authorId: 'xyz'}, {});
 
 module.exports.handler = handler;

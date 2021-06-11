@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 //const { getMongoConfig } = require('../lib/secrets');
-require('dotenv').config(); 
-const { Suggestion } = require('../models/suggestion');
+// require('dotenv').config(); 
+const { Suggestion } = require('./suggestion');
 
 const handler = async function (event, context) {
     const MongoURI = process.env.MONGO_CONNECTION_STRING; //await getMongoConfig();
