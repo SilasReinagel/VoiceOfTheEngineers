@@ -1,4 +1,6 @@
 <script>
+	import { client } from './apollo';
+	import { setClient } from 'svelte-apollo';
 	import DefaultLayout from './Layout/DefaultLayout.svelte';
 	import site, { pages } from './static-content.js';
 
@@ -6,6 +8,8 @@
   const matchingRoutes = pages.filter(r => r.path.toLocaleLowerCase() === (page).toLocaleLowerCase());
 	const component = matchingRoutes[0].component;
 	const pageName = matchingRoutes[0].name;
+
+  setClient(client);
 </script>
 
 <main style={site.backgroundInlineStyle}>

@@ -5,6 +5,7 @@
   import AddSuggestionButton from '../Components/AddSuggestionButton.svelte';
   import AddSuggestionForm from '../Components/AddSuggestionForm.svelte';
   import SuggestionDetail from '../Components/SuggestionDetail.svelte';
+  import TestGqlButton from '../Components/TestGqlButton.svelte';
 </script>
 
 <Container>
@@ -27,6 +28,8 @@
     <AddSuggestionForm />
   {/if}
   
+  <!-- <TestGqlButton/> -->
+
   </section>
 </Container>
 
