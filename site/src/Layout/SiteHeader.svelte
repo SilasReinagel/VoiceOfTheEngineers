@@ -4,7 +4,7 @@
   import HomeIcon from '../Elements/HomeIcon.svelte';
   import LoginIcon from '../Elements/LoginIcon.svelte';
   import LogoutIcon from '../Elements/LogoutIcon.svelte';
-
+  import { hash } from '../Util/hash';
   import { onMount } from "svelte";
   import auth from "../authService";
 
@@ -13,6 +13,10 @@
     auth0Client = await auth.createClient();
     let user = await auth0Client.getUser();
     state.update( s => ({ ...s, user: user}));
+    if(user){
+      console.log("user sub: ", user.sub);
+      
+    }
   });
 
 	const login = () => {
