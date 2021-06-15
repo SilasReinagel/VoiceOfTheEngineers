@@ -25,12 +25,4 @@ button {
   border: 0px;
   background-color: rgba(0,0,0,0);
 }
-
-@media screen and (max-width: 600px) {
-  h1 {
-    
-  }
-}
-
-
 </style>

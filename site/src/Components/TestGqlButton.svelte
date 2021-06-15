@@ -5,14 +5,19 @@
   const createSuggestionGql = gql`
       mutation CreateSuggestion($input: CreateSuggestionInput!) {
         createSuggestion(input: $input) {
+          authorId
+          upvotes
           title
+          description
+          createdOn
+          updatedOn
         }
       }
   `;
 
   const onClick = () =>
     client.mutate({
-      mutation: createSuggestionGql, 
+      mutation: createSuggestionGql,
       variables: { input: { authorId: "Test", title: "Title", description: "Description" } }
     })
     .then(r => console.log(r));
