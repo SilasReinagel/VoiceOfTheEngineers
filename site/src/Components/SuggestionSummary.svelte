@@ -10,7 +10,7 @@
   };
 </script>
 
-<div class="root">
+<div class="suggestion-summary">
   <div class="row center full-width">
     <UpvoteWidget suggestion={suggestion}/>
     <div class="suggestion-summary">
@@ -19,7 +19,7 @@
       </button>
       <div class="row space-between">
         <p>Last Activity: {suggestion.lastActivityDateTime}</p>
-        <p>Created: {suggestion.createdDateTime}</p>
+        <p class="mobile-hidden">Created: {suggestion.createdDateTime}</p>
         {#if commentsEnabled}
         <button on:click={viewSuggestionDetails} class="link-button">
           <p><u>{suggestion.numComments} comments</u></p>
@@ -31,7 +31,7 @@
 </div>
 
 <style>
-.root {
+.suggestion-summary {
   display: flex;
   flex-direction: column;
   margin: 1em 0;
@@ -73,5 +73,24 @@ button {
 
 .link-button {
   background-color: rgba(0,0,0,0);
+}
+
+@media screen and (max-width: 600px) {
+   h2 {
+     font-size: 1em;
+   }
+
+   p {
+     font-size: 0.7rem;
+   }
+
+   .suggestion-summary {
+     padding: 4px;
+     margin: 6px 0;
+   }
+
+   .idea {
+     padding: 8px;
+   }
 }
 </style>

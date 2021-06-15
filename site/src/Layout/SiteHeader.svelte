@@ -23,7 +23,7 @@
     auth.logout(auth0Client);
   }
 
-  const iconButtonSize = 44;
+  const iconButtonSize = 40;
 
   const returnHome = () => {
     state.update(s => ({ ...s, currentView: 'Hottest' }));
@@ -95,20 +95,37 @@
   }
 
   .logo-img {
+    min-width: 36px;
     width: 48px;
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   .icon-button {
     border: 0px;
     border-radius: 6px;
     background-color: rgba(0,0,0,0);
-    padding: 8px;
     min-width: 48px;
-    min-height: 48px;
     cursor: pointer;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 8px;
     margin-right: 8px;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .logo-img {
+      min-width: 32px;
+    }
+
+    .icon-button {    
+      min-width: 32px;
+      width: 44px;
+    }
+
+    header {
+      height: 66px;
+      padding: 0 8px;
+    }
   }
 </style>

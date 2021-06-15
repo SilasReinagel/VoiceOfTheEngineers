@@ -8,3 +8,10 @@
         fill="#ffffff" data-original="#000000" style="" class=""/>
     </g>
 </svg>
+
+<style>
+  svg:not(:root) {
+    width:100%;
+    height: auto;
+  }
+</style>

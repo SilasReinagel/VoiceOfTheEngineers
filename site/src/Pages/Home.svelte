@@ -46,4 +46,18 @@
     text-align: center;
     margin-bottom: 1.5em;
   }
+  
+  @media screen and (max-width: 600px) {
+    section {
+      padding: 0.2em 0.6em;
+    }
+
+    h1 {
+      text-align: center;
+    }
+    
+    .link {
+      font-size: 0.9rem;
+    }
+  }
 </style>

@@ -24,7 +24,7 @@
           compelling reason for prioritization by management, since they represent huge value adds for the company. Ideas that aren't 
           very popular will naturally fall off the radar, as innovators can easily see that other ideas are more compelling.</p>
   
-        <h3>Ideas > People</h3>
+        <h3>Ideas&nbsp;&nbsp;>&nbsp;&nbsp;People</h3>
         <p>The secondary concept of Voice is that the ideas are king. We don't care about job titles, cliques, silos, or anything else. Ideas 
           stand or die on their own merits and pitch, not based on political standing of their originators or advocates. To make this possible, all suggestions 
           and upvotes are stored anonymously and stripped of all user information. Your privacy is key. Your ideas are valuable!</p>
@@ -64,5 +64,12 @@
   p {
     color: #ddd;
     font-size: 0.9em;
+  }
+
+  
+  @media screen and (max-width: 600px) {
+    p {
+      font-size: 1em;
+    }
   }
 </style>

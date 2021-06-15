@@ -26,7 +26,7 @@
   })
 </script>
 
-<button class="metascore center-vh {controlsActive}" on:click={onClick}>
+<button class="row space-between metascore center-vh {controlsActive}" on:click={onClick}>
   <div class="upvote-icon center-vh">
     {#if $isLoggedIn}
     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -45,11 +45,12 @@
 <style>  
 .upvotes {
   min-width: 56px;
-  text-align: center;
+  margin-left: 6px;
+  text-align: right;
 }
 
 .metascore {
-  margin-right: 20px;
+  margin-right: 1rem;
 }
 
 .metascore p {
@@ -58,8 +59,8 @@
 }
 
 .upvote-icon {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
 }
 
 button {  
@@ -70,5 +71,28 @@ button {
 
 .active {
   cursor: pointer;
+}
+
+svg:not(:root) {
+  width:100%;
+  height: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .upvotes {
+    min-width: 32px;
+  }
+  
+  .metascore p {
+    font-size: 1.6em;
+  }
+
+  .metascore {
+    margin-right: 8px;
+  }
+
+  .upvote-icon {
+    width: 32px;
+  }
 }
 </style>
