@@ -7,6 +7,7 @@ const namespace = 'http://voiceoftheengineers.netlify.app/user_authorization';
 const handeCreateClient = async () => {
   let client = await auth.createClient();
   let user = await client.getUser();
+  console.log(user);
   if(user){
     user.userId = user[namespace].userId;
     delete user[namespace];
@@ -31,10 +32,11 @@ const loginWithPopup = async (client, options) => {
     await client.loginWithPopup(options);
     
     let user = await client.getUser();
-    user.userId = user[namespace].userId;
-    delete user[namespace];
+    if(user){
+      user.userId = user[namespace].userId;
+      delete user[namespace];
+    }
     state.update( s => ({ ...s, user: user}));
-    console.log(user);
 
   } catch (e) {
     // eslint-disable-next-line
