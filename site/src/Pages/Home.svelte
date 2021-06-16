@@ -30,7 +30,7 @@
       <AddSuggestionForm />
     {/if}
   
-    <!-- <TestGqlButton/> -->
+    <TestGqlButton/>
 
   </section>
 </Container>

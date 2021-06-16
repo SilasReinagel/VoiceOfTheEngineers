@@ -4,7 +4,7 @@ import { WebSocketLink } from "apollo-link-ws";
 import { split } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
 import { getMainDefinition } from "apollo-utilities";
-import config from '../gql_config';
+import config from '../../gql_config';
 
 const headers = {
   'content-type': 'application/json',

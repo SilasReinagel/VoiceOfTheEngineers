@@ -2,7 +2,7 @@
   export let suggestion;
   
   import state, { isLoggedIn } from '../Store';
-  import { upvoteSuggestion, unUpvoteSuggestion } from '../operations';  
+  import { upvoteSuggestion, unUpvoteSuggestion } from '../Backend/operations';  
   import { afterUpdate} from 'svelte';
 
   const getCurrentDefaultButtonColor = () => suggestion.upvotedByCurrentUser ? "#fff" : "#999";

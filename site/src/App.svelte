@@ -1,5 +1,5 @@
 <script>
-	import { client } from './apollo';
+	import { client } from './Backend/apollo';
 	import { setClient } from 'svelte-apollo';
 	import DefaultLayout from './Layout/DefaultLayout.svelte';
 	import site, { pages } from './static-content.js';

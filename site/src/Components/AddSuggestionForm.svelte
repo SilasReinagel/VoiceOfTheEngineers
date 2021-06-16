@@ -1,15 +1,19 @@
 <script>
-  import state, { suggestion } from '../Store';
+  import operations from '../Backend/operations';
 
   let shortVersion = '';
   let detail = '';
 
   const submit = e => {
-    const nowStr = new Date().toLocaleDateString('en-US');
-    state.update(s => ({ ...s, 
-      hottestSuggestions: s.hottestSuggestions.concat(suggestion(-1, shortVersion, detail, nowStr, nowStr, 1, 0, true)),
-      currentView: 'Hottest'
-    }))
+    e.preventDefault();
+    
+    // Show invalid input prompt. Disable submit button visually until form is filled.
+    if (!shortVersion || shortVersion.length < 1)
+      return;
+    if (!detail || detail.length < 1)
+      return;      
+    
+    operations.createSuggestion({ authorId: 'Test', title: shortVersion, description: detail });
   };
 </script>
 
