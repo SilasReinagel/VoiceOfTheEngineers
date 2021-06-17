@@ -2,8 +2,8 @@
   export let suggestion;
   
   import state, { isLoggedIn } from '../Store';
-  import { upvoteSuggestion, unUpvoteSuggestion } from '../Backend/operations';  
-  import { afterUpdate} from 'svelte';
+  import { toggleSuggestionUpvote } from '../Backend/operations';  
+  import { afterUpdate } from 'svelte';
 
   const getCurrentDefaultButtonColor = () => suggestion.upvotedByCurrentUser ? "#fff" : "#999";
   const getControlClass = () => $isLoggedIn ? "active" : "";
@@ -11,9 +11,7 @@
   const getCurrentClickOperation = () => 
     !$isLoggedIn 
       ? () => {} 
-      : suggestion.upvotedByCurrentUser
-        ? () => unUpvoteSuggestion($state, suggestion.id)
-        : () => upvoteSuggestion($state, suggestion.id);
+      : () => toggleSuggestionUpvote($state, suggestion.id);
 
   let controlsActive = getControlClass()
   let buttonColor = getCurrentDefaultButtonColor();

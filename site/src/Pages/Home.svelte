@@ -7,12 +7,11 @@
   import AddSuggestionForm from '../Components/AddSuggestionForm.svelte';
   import SuggestionDetail from '../Components/SuggestionDetail.svelte';
   import site from '../static-content';
-  import api from '../Backend/VoiceApi';
+  import operations from '../Backend/operations';
 
-  onMount(() => {
-    api.getHottestSuggestions()
-      .then(hottest => state.update(s => ({ ...s, hottestSuggestions: hottest })));
-  });
+  const getUserId = () => $isLoggedIn ? $state.user.userId : null;
+
+  onMount(() => operations.refreshHottestSuggestions(getUserId()));
 </script>
 
 <Container>

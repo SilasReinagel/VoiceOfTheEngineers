@@ -2,6 +2,10 @@ import { client } from './apollo';
 import gql from 'graphql-tag';
 import { makeSuggestion } from '../Store';
 
+const numberDescendingSort = (a,b) => b-a;
+const dateStr = dateTime => new Date(dateTime).toLocaleDateString('en-US');
+const logged = x => { console.log(x); return x; };
+
 const createSuggestionGql = gql`
     mutation CreateSuggestion($input: CreateSuggestionInput!) {
       createSuggestion(input: $input) {
@@ -56,13 +60,31 @@ export const getHottestSuggestions = (userId) =>
       s.upvotes.filter(u => u === userId).length > 0
     )));
 
-const numberDescendingSort = (a,b) => b-a;
-const dateStr = dateTime => new Date(dateTime).toLocaleDateString('en-US');
-const logged = x => { console.log(x); return x; };
+
+// { userId, suggestionId }
+const toggleUpvoteGql = gql`
+  mutation UpvoteSuggestion($input: UpvoteSuggestionInput!) {
+    upvoteSuggestion(input: $input) {
+      authorId
+      upvotes
+      title
+      description
+      createdOn
+      updatedOn
+    }
+  }
+`;
+
+export const toggleUpvote = (userId, suggestionId) =>
+  client.mutate({ 
+    mutation: toggleUpvoteGql,    
+    variables: { input: { userId, suggestionId } }
+  });
 
 export default {
   addSuggestion,
-  getHottestSuggestions
+  getHottestSuggestions,
+  toggleUpvote
 };
 
 
