@@ -5,7 +5,6 @@
   import AddSuggestionButton from '../Components/AddSuggestionButton.svelte';
   import AddSuggestionForm from '../Components/AddSuggestionForm.svelte';
   import SuggestionDetail from '../Components/SuggestionDetail.svelte';
-  import TestGqlButton from '../Components/TestGqlButton.svelte';
   import site from '../static-content';
 </script>
 
@@ -29,9 +28,6 @@
     {#if $state.currentView === 'NewSuggestion'}
       <AddSuggestionForm />
     {/if}
-  
-    <TestGqlButton/>
-
   </section>
 </Container>
 
