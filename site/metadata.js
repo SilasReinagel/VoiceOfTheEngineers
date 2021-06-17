@@ -1,7 +1,7 @@
 module.exports = {
     name: 'Voice of the Engineers',
-    url: 'https://www.google.com',
-    image: 'https://picsum.photos/200/300',
+    url: 'https://voiceoftheengineers.netlify.app',
+    image: 'https://voiceoftheengineers.netlify.app/images/open-graph-carvana-image.jpg',
     description: 'Hottest Ideas by Engineers for their Companies',
     keywords: 'suggestion box,suggestions,social sourcing,developer morale,innovation'
   };
