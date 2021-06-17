@@ -7,13 +7,12 @@
   const page = '/' + (new URLSearchParams(window.location.search).get('page') || '');
   const matchingRoutes = pages.filter(r => r.path.toLocaleLowerCase() === (page).toLocaleLowerCase());
 	const component = matchingRoutes[0].component;
-	const pageName = matchingRoutes[0].name;
 
   setClient(client);
 </script>
 
 <main style={site.backgroundInlineStyle}>
-	<DefaultLayout {pageName} >
+	<DefaultLayout>
 		<svelte:component this={component}/>
 	</DefaultLayout>
 </main>

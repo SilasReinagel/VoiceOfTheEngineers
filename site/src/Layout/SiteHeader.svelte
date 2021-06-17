@@ -8,9 +8,7 @@
   import auth from "../authService";
 
 	let auth0Client;
-	onMount(async () => {
-    auth0Client = await auth.handeCreateClient();
-  });
+	onMount(async () => auth0Client = await auth.handeCreateClient());
 
 	const login = () => {
     auth.loginWithPopup(auth0Client);

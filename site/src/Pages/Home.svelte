@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from 'svelte';
   import state, { isLoggedIn } from '../Store';
   import Container from '../Elements/TightContainer.svelte';
   import SuggestionSummary from '../Components/SuggestionSummary.svelte';
@@ -6,6 +7,12 @@
   import AddSuggestionForm from '../Components/AddSuggestionForm.svelte';
   import SuggestionDetail from '../Components/SuggestionDetail.svelte';
   import site from '../static-content';
+  import api from '../Backend/VoiceApi';
+
+  onMount(() => {
+    api.getHottestSuggestions()
+      .then(hottest => state.update(s => ({ ...s, hottestSuggestions: hottest })));
+  });
 </script>
 
 <Container>

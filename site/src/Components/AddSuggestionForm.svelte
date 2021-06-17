@@ -1,5 +1,6 @@
 <script>
   import operations from '../Backend/operations';
+  import state from '../Store';
 
   let shortVersion = '';
   let detail = '';
@@ -13,7 +14,7 @@
     if (!detail || detail.length < 1)
       return;      
     
-    operations.createSuggestion({ authorId: 'Test', title: shortVersion, description: detail });
+    operations.createSuggestion({ authorId: $state.user.userId, title: shortVersion, description: detail });
   };
 </script>
 
