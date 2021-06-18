@@ -2,6 +2,7 @@ import createAuth0Client from "@auth0/auth0-spa-js";
 import state, { popupOpen } from "./Store/index";
 import config from "../auth_config";
 
+const localStorage = window.localStorage;
 const namespace = 'http://voiceoftheengineers.netlify.app/user_authorization';
 
 const handeCreateClient = async () => {
@@ -13,6 +14,7 @@ const handeCreateClient = async () => {
     delete user[namespace];
   }
 
+  localStorage.setItem('UserId', user.userId);
   state.update( s => ({ ...s, user: user}));
   
   return client;
@@ -39,6 +41,7 @@ const loginWithPopup = async (client, options) => {
       delete user[namespace];
     }
 
+    localStorage.setItem('UserId', user.userId);
     state.update( s => ({ ...s, user: user}));
 
   } catch (e) {

@@ -14,7 +14,7 @@
     if (!detail || detail.length < 1)
       return;      
     
-    operations.createSuggestion({ authorId: $state.user.userId, title: shortVersion, description: detail });
+    operations.createSuggestion($state, { authorId: $state.user.userId, title: shortVersion, description: detail });
   };
 </script>
 

@@ -9,9 +9,7 @@
   import site from '../static-content';
   import operations from '../Backend/operations';
 
-  const getUserId = () => $isLoggedIn ? $state.user.userId : null;
-
-  onMount(() => operations.refreshHottestSuggestions(getUserId()));
+  onMount(() => operations.refreshHottestSuggestions($state));
 </script>
 
 <Container>

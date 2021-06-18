@@ -17,14 +17,14 @@ const toggleUpvoteLocal = (snapshot, id) => {
   state.update(st => ({ ...st, hottestSuggestions: suggestions.map(x => x) }));  
 };
 
-const toggleUpvoteServer = (snapshot, id) => {
+const toggleUpvoteServer = (snapshot, suggestionId) => {
     const userId = snapshot.user.userId;
-    api.toggleUpvote(id, userId)
-      .then(() => refreshHottestSuggestions())
+    api.toggleUpvote(userId, suggestionId)
+      .then(() => refreshHottestSuggestions(snapshot))
       .catch(e => console.error(e));
 };
 
-export const createSuggestion = (suggestion) => {
+export const createSuggestion = (snapshot, suggestion) => {
   console.log({ suggestion });
   api.addSuggestion(suggestion)
     .then(r => console.log(r))  
@@ -34,11 +34,12 @@ export const createSuggestion = (suggestion) => {
       hottestSuggestions: s.hottestSuggestions.concat(makeSuggestion(-1, suggestion.title, suggestion.description, getNowStr(), getNowStr(), 1, 0, true)),
       currentView: 'Hottest'
     })))
-    .then(() => refreshHottestSuggestions());
+    .then(() => refreshHottestSuggestions(snapshot));
 };
 
-export const refreshHottestSuggestions = (userId) => {
-  api.getHottestSuggestions()
+export const refreshHottestSuggestions = (snapshot) => {
+  const userId = !!snapshot.user && !!snapshot.user.userId && snapshot.user.userId || null;
+  api.getHottestSuggestions(userId)
     .then(hottest => state.update(s => ({ ...s, hottestSuggestions: hottest })))    
     .catch(e => console.error(e));
 };
