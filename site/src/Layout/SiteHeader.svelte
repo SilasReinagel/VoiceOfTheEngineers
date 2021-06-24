@@ -72,6 +72,15 @@
     padding: 0 16px;
   }
 
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+  }
+
   h1 {
     color: var(--header-color);
     margin: 10px;

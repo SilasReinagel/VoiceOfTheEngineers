@@ -1,24 +1,30 @@
 <script>
-  import { suggestionDetail } from '../Store';
+  import { suggestionDetail } from "../Store";
 </script>
 
 <div class="root center">
-  <div class="row space-between">
+
+  <div class="title row space-between">
     <h1>{$suggestionDetail.title}</h1>
     <div class="metascore">
       <p class="text-center">Popularity</p>
       <h2 class="text-center">{$suggestionDetail.upvotes}</h2>
     </div>
   </div>
-  <hr>
+
+  <hr />
+
   <div class="row space-between">
     <p>Last Activity: {$suggestionDetail.lastActivityDateTime}</p>
     <p>Created: {$suggestionDetail.createdDateTime}</p>
   </div>
-  <hr>
+
+  <hr />
+
   <div class="details">
     <p>{@html $suggestionDetail.detail}</p>
   </div>
+
 </div>
 
 <style>
@@ -29,7 +35,8 @@
     padding: 24px;
   }
 
-  h1, h2 {
+  h1,
+  h2 {
     color: #000;
   }
 
@@ -41,9 +48,24 @@
     text-align: center;
   }
 
-  .metascore h2, 
+  .metascore h2,
   .metascore p {
     margin: 0;
+  }
+
+  @media screen and (max-width: 600px) {
+    .title.row.space-between {
+      text-align: center;
+      flex-direction: column;
+    }
+
+    h2 {
+      font-size: 1.3em;
+    }
+
+    p {
+      font-size: 0.7rem;
+    }
   }
 
 </style>
