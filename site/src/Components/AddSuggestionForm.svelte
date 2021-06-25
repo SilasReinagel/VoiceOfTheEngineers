@@ -33,7 +33,7 @@
 
 <div class="root center">
   <form class="form">
-    <h2>If you could had a magic wand and could change anything about your workplace, what would you change?</h2>
+    <h2>If you could have a magic wand that could change anything about your workplace, what would you change?</h2>
     <hr/>
     <input type="text" name="name" placeholder="Short Version" bind:value={shortVersion}/>
     <textarea name="message" placeholder="Detailed Suggestion" bind:value={detail}/>
