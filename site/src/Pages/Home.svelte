@@ -1,6 +1,6 @@
 <script>
-  import { onMount } from 'svelte';
-  import state, { isLoggedIn } from '../Store';
+  import { onMount, afterUpdate } from 'svelte';
+  import state, { hottestSuggestions, isLoggedIn } from '../Store';
   import Container from '../Elements/TightContainer.svelte';
   import SuggestionSummary from '../Components/SuggestionSummary.svelte';
   import AddSuggestionButton from '../Components/AddSuggestionButton.svelte';
@@ -9,7 +9,22 @@
   import site from '../static-content';
   import operations from '../Backend/operations';
 
+  const viewSuggestionDetails = suggestion => {
+    state.update(s => ({ ...s, suggestionDetail: suggestion, currentView: 'SuggestionDetail' }));
+  };
+
   onMount(() => operations.refreshHottestSuggestions($state));
+
+  afterUpdate(() => {
+    const suggestionId = (new URLSearchParams(window.location.search).get('suggestionId') || '');
+    console.log({ suggestionId });
+    if (suggestionId) 
+    {
+      const matching = $hottestSuggestions.filter(s => s.id == suggestionId);
+      if (matching.length > 0)
+        viewSuggestionDetails(matching[0]);
+    }    
+  })
 </script>
 
 <Container>

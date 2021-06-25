@@ -16,6 +16,7 @@
 
   <div class="row space-between">
     <p>Last Activity: {$suggestionDetail.lastActivityDateTime}</p>
+    <a href="{window.location.href.split('?')[0] + `?suggestionId=${$suggestionDetail.id}`}"><p><u>Share Link</u></p></a>
     <p>Created: {$suggestionDetail.createdDateTime}</p>
   </div>
 

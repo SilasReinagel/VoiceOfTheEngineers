@@ -22,11 +22,8 @@
 
   const returnHome = () => {
     state.update(s => ({ ...s, currentView: 'Hottest' }));
-    if ((new URLSearchParams(window.location.search).get('page') || '') === 'vision')
-    {
-      window.history.pushState({}, document.title, "/");
-      window.location.pathname = "/";
-    }
+    window.history.pushState({}, document.title, window.location.href.split('?')[0]);
+    window.location.pathname = "";
   };
 </script>
 
