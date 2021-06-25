@@ -3,7 +3,7 @@ import api from './VoiceApi';
 
 export const toggleSuggestionUpvote = (snapshot, suggestionId) => {
   toggleUpvoteLocal(snapshot, suggestionId);
-  //toggleUpvoteServer(snapshot, suggestionId);
+  toggleUpvoteServer(snapshot, suggestionId);
 };
 
 const toggleUpvoteLocal = (snapshot, id) => {

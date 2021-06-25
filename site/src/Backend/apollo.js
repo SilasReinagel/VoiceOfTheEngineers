@@ -16,6 +16,17 @@ const getHeaders = () => {
 
 const cache = new InMemoryCache();
 
+const options = {
+  watchQuery: {
+    fetchPolicy: 'no-cache',
+    errorPolicy: 'ignore',
+  },
+  query: {
+    fetchPolicy: 'no-cache',
+    errorPolicy: 'all',
+  },
+};
+
 const wsLink = new WebSocketLink({
   uri: `ws://${config.aws_appsync_graphqlEndpoint}`,
   options: {
@@ -48,5 +59,6 @@ export const client = new ApolloClient({
   auth: {
     type: config.aws_appsync_authenticationType,
     apiKey: config.aws_appsync_id
-  }
+  },
+  defaultOptions: options
 });

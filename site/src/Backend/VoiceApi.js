@@ -57,7 +57,7 @@ export const getHottestSuggestions = (userId) =>
       !!s.updatedOn ? dateStr(s.updatedOn) : dateStr(s.createdOn), 
       s.upvotes.length, 
       -1, // TODO: Num Comments
-      s.upvotes.includes(userId)
+      s.upvotes.indexOf(userId) >= 0
     )));
 
 
