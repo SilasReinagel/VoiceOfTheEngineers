@@ -1,9 +1,22 @@
 <script>
   import operations from '../Backend/operations';
   import state from '../Store';
+  import { beforeUpdate, afterUpdate } from 'svelte';
 
   let shortVersion = '';
   let detail = '';
+  let disabled = true;
+
+  const isValidInput = () => {
+    if(shortVersion === '' || detail === ''){
+      return true;
+    }
+    return false;
+  };
+
+  beforeUpdate(() => {
+	  disabled = isValidInput();
+  });
 
   const submit = e => {
     e.preventDefault();
@@ -24,7 +37,8 @@
     <hr/>
     <input type="text" name="name" placeholder="Short Version" bind:value={shortVersion}/>
     <textarea name="message" placeholder="Detailed Suggestion" bind:value={detail}/>
-    <button on:click={submit}>Submit</button>
+    <p class='text-center m0'>* Please fill out all fields to submit.</p>
+    <button on:click={submit} disabled={disabled} on:click>Submit</button>
   </form>
 </div>
 
