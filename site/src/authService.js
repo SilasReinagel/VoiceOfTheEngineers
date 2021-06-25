@@ -5,18 +5,25 @@ import config from "../auth_config";
 const localStorage = window.localStorage;
 const namespace = 'http://voiceoftheengineers.netlify.app/user_authorization';
 
-const handeCreateClient = async () => {
-  let client = await auth.createClient();
+const getUser = async (client) => {
   let user = await client.getUser();
+  console.log("user: ", user);
 
   if(user){
     user.userId = user[namespace].userId;
     delete user[namespace];
+    localStorage.setItem('UserId', user.userId);
   }
 
-  localStorage.setItem('UserId', user.userId);
+  return user;
+};
+
+const handeCreateClient = async () => {
+  let client = await auth.createClient();
+  let user = await getUser(client);
+
   state.update( s => ({ ...s, user: user}));
-  
+
   return client;
 };
 
@@ -31,17 +38,11 @@ const createClient = async () => {
 
 const loginWithPopup = async (client, options) => {
   popupOpen.set(true);
+  
   try {
     await client.loginWithPopup(options);
-    
-    let user = await client.getUser();
+    let user = await getUser(client);
 
-    if(user){
-      user.userId = user[namespace].userId;
-      delete user[namespace];
-    }
-
-    localStorage.setItem('UserId', user.userId);
     state.update( s => ({ ...s, user: user}));
 
   } catch (e) {
